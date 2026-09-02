@@ -36,11 +36,11 @@ jobs:
 
       - name: Commit and push results if changed
         run: |
-          git add tv/*_checked.txt tv/*_checked.m3u
+          git add tv/aggregated_checked.txt tv/aggregated_checked.m3u
           if git diff --cached --quiet; then
             echo "本次校验结果与上次一致，无需提交"
           else
-            git commit -m "chore: 自动校验直播源 $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git commit -m "chore: 自动聚合校验直播源 $(date -u +'%Y-%m-%d %H:%M UTC')"
             git push origin master
           fi
 

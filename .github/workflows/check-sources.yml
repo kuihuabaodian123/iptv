@@ -4,10 +4,10 @@ on:
   # 手动触发
   workflow_dispatch: {}
 
-  # 每6小时自动跑一次，错开 sync-upstream.yml 半小时，
-  # 让它先同步完上游最新列表，这个再基于最新列表做校验
+  # 每2小时自动跑一次，缩短校验间隔以更快发现失效源
+  # （错开 sync-upstream.yml 的整点半小时，让它先同步完上游最新列表，这个再基于最新列表做校验）
   schedule:
-    - cron: '30 */6 * * *'
+    - cron: '30 */2 * * *'
 
 jobs:
   check:
